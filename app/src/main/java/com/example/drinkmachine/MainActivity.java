@@ -18,6 +18,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 Intent startIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(startIntent);
+
+                //this is my test code
             }
 
         });
