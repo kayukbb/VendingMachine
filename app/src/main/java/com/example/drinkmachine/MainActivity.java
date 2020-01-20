@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
                 Intent startIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(startIntent);
             }
-
         });
     }
 }
