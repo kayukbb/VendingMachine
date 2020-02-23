@@ -76,9 +76,32 @@ public class RegActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-               register.setUserName(UserName.getText().toString());
-               register.setPassword(Pw.getText().toString());
-               Reg.child(String.valueOf(maxid+1)).setValue(register);
+                String nameT = UserName.getText().toString();
+                String pwT = Pw.getText().toString();
+                String pwT2 =Pw2.getText().toString();
+                if(nameT.isEmpty() && pwT.isEmpty() && pwT2.isEmpty()){
+                    Toast.makeText(RegActivity.this,"Please Enter the Fields Clearly !!!",Toast.LENGTH_LONG).show();
+                }
+                else if (nameT.isEmpty()){
+                    UserName.setError("Please enter User Name!!");
+                    UserName.requestFocus();
+                }
+                else if(pwT.isEmpty()) {
+                    Pw.setError("Please enter password!");
+                    Pw.requestFocus();
+                }
+                else if(pwT2.isEmpty()) {
+                    Pw2.setError("Please enter password again!");
+                    Pw2.requestFocus();
+                }
+                else if (!(pwT.equals(pwT2))){
+                    Toast.makeText(RegActivity.this,"Password are not same",Toast.LENGTH_LONG).show();
+                }
+                else {
+                    register.setUserName(UserName.getText().toString());
+                    register.setPassword(Pw.getText().toString());
+                    Reg.child(String.valueOf(maxid + 1)).setValue(register);
+                }
 
             }
         });

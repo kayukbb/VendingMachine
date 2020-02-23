@@ -1,5 +1,6 @@
 package com.example.drinkmachine;
 
+
 public class Register {
     private String UserName;
     private String Password;
