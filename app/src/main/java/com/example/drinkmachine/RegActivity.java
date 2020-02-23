@@ -31,11 +31,11 @@ public class RegActivity extends AppCompatActivity {
     String Username;
     ArrayList<String> AcList;
     long maxid = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reg);
-        a = (TextView)findViewById(R.id.textView2);
         UserName = (EditText)findViewById(R.id.UserName);
         Pw = (EditText)findViewById(R.id.Pw);
         Pw2 = (EditText)findViewById(R.id.Pw2);
@@ -75,6 +75,7 @@ public class RegActivity extends AppCompatActivity {
         Registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                register.setUserName(UserName.getText().toString());
                register.setPassword(Pw.getText().toString());
                Reg.child(String.valueOf(maxid+1)).setValue(register);
