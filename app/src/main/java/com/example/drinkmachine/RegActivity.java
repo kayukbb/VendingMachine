@@ -101,7 +101,10 @@ public class RegActivity extends AppCompatActivity {
                     register.setUserName(UserName.getText().toString());
                     register.setPassword(Pw.getText().toString());
                     Reg.child(String.valueOf(maxid + 1)).setValue(register);
+                    Toast.makeText(RegActivity.this,"Sign up successful",Toast.LENGTH_LONG).show();
+                    finish();
                 }
+
 
             }
         });
