@@ -53,14 +53,14 @@ public class RegActivity extends AppCompatActivity {
             }
         });
 
-        for(int i = 0; i<= (int)maxid; i++) {
+        for(int i = 0; i< (int)maxid; i++) {
             int j = i+1;
             UserInfo = FirebaseDatabase.getInstance().getReference().child("Register").child(String.valueOf(j));
             UserInfo.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     Username = dataSnapshot.child("userName").getValue().toString();
-
+                    AcList.add(Username);
                 }
 
                 @Override
