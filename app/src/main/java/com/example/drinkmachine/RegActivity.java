@@ -18,6 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class RegActivity extends AppCompatActivity {
     TextView a;
@@ -29,6 +30,9 @@ public class RegActivity extends AppCompatActivity {
     String Username;
     ArrayList<String> AcList = new ArrayList<String>();
     long maxid;
+    private static final Pattern PASSWORD_PATTERN =
+            Pattern.compile("^"+"(?=.*[0-9])"+"(?=.*[a-z])"+"(?=.*[A-Z])"+"(?=\\S+$)"+".{5,14}"+"$");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +71,7 @@ public class RegActivity extends AppCompatActivity {
                         UserName.requestFocus();
                     }
                 }
+
                 if(nameT.isEmpty() && pwT.isEmpty() && pwT2.isEmpty()){
                     Toast.makeText(RegActivity.this,"Please Enter the Fields Clearly !!!",Toast.LENGTH_LONG).show();
                 }
@@ -82,6 +87,15 @@ public class RegActivity extends AppCompatActivity {
                     Pw2.setError("Please enter password again!");
                     Pw2.requestFocus();
                 }
+                else if (nameT.length()<3 || nameT.length()>12){
+                    UserName.setError("The Username is limited between 4-12");
+                    UserName.requestFocus();
+                }
+                else if(!PASSWORD_PATTERN.matcher(pwT).matches()){
+                        Pw.setError("This password too weak,\nAt least 1 Digit, 1 Lower and Upper case letter!");
+                        Pw.requestFocus();
+                    }
+
                 else if (!(pwT.equals(pwT2))){
                     Toast.makeText(RegActivity.this,"Password are not same",Toast.LENGTH_LONG).show();
                 }
