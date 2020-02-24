@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.135" />
 
     <Button
-        android:id="@+id/Registration"
+        android:id="@+id/Login"
         android:layout_width="190dp"
         android:layout_height="53dp"
         android:background="@color/colorPrimary"
@@ -34,19 +34,19 @@
 
     <EditText
         android:id="@+id/UserName"
-        android:layout_width="322dp"
-        android:layout_height="70dp"
-        android:layout_marginTop="82dp"
+        android:layout_width="313dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="104dp"
         android:ems="10"
         android:hint="User name"
         android:inputType="text"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.528"
+        app:layout_constraintHorizontal_bias="0.479"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.039" />
+        app:layout_constraintVertical_bias="0.028" />
 
     <EditText
         android:id="@+id/Pw"
@@ -61,20 +61,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UserName"
         app:layout_constraintVertical_bias="0.098" />
-
-    <TextView
-        android:id="@+id/FollowFormat"
-        android:layout_width="167dp"
-        android:layout_height="74dp"
-        android:layout_marginEnd="47dp"
-        android:text="Please follow the format"
-        android:textColor="#323232"
-        android:visibility="invisible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.238"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.66" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

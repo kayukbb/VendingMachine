@@ -5,12 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,8 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.EventListener;
-import java.util.List;
 
 public class RegActivity extends AppCompatActivity {
     TextView a;
@@ -29,9 +27,8 @@ public class RegActivity extends AppCompatActivity {
     Register register;
     DatabaseReference UserInfo;
     String Username;
-    ArrayList<String> AcList;
-    long maxid = 0;
-
+    ArrayList<String> AcList = new ArrayList<String>();
+    long maxid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +36,7 @@ public class RegActivity extends AppCompatActivity {
         UserName = (EditText)findViewById(R.id.UserName);
         Pw = (EditText)findViewById(R.id.Pw);
         Pw2 = (EditText)findViewById(R.id.Pw2);
-        Registration = (Button)findViewById(R.id.Registration);
+        Registration = (Button)findViewById(R.id.Login);
         register = new Register();
         Reg = FirebaseDatabase.getInstance().getReference().child("Register");
         Reg.addValueEventListener(new ValueEventListener() {
@@ -47,30 +44,15 @@ public class RegActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists())
                     maxid=(dataSnapshot.getChildrenCount());
+                for(int i = 1; i <= (int)maxid; i++) {
+                    Username = dataSnapshot.child(String.valueOf(i)).child("userName").getValue().toString();
+                    AcList.add(Username);
+                }
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         });
-
-        for(int i = 0; i< (int)maxid; i++) {
-            int j = i+1;
-            UserInfo = FirebaseDatabase.getInstance().getReference().child("Register").child(String.valueOf(j));
-            UserInfo.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    Username = dataSnapshot.child("userName").getValue().toString();
-                    AcList.add(Username);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-
-        }
-
 
         Registration.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,6 +61,12 @@ public class RegActivity extends AppCompatActivity {
                 String nameT = UserName.getText().toString();
                 String pwT = Pw.getText().toString();
                 String pwT2 =Pw2.getText().toString();
+                for(int i = 0; i <AcList.size(); i++){
+                    if(nameT.equals(AcList.get(i))){
+                        UserName.setError("The user name has been used");
+                        UserName.requestFocus();
+                    }
+                }
                 if(nameT.isEmpty() && pwT.isEmpty() && pwT2.isEmpty()){
                     Toast.makeText(RegActivity.this,"Please Enter the Fields Clearly !!!",Toast.LENGTH_LONG).show();
                 }
@@ -104,10 +92,7 @@ public class RegActivity extends AppCompatActivity {
                     Toast.makeText(RegActivity.this,"Sign up successful",Toast.LENGTH_LONG).show();
                     finish();
                 }
-
-
             }
         });
-
     }
 }
