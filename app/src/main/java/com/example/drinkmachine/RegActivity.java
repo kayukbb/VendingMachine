@@ -61,7 +61,6 @@ public class RegActivity extends AppCompatActivity {
         Registration.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 String nameT = UserName.getText().toString();
                 String pwT = Pw.getText().toString();
                 String pwT2 =Pw2.getText().toString();
