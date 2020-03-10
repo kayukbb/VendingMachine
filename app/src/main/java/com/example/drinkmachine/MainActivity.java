@@ -26,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     Spinner sort;
     String SortText;
     ArrayList<String> List =  new ArrayList<>();
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -53,12 +54,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         search = (Button) findViewById(R.id.go);
         search.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 Machine.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -82,6 +81,31 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+        Button all = (Button) findViewById(R.id.All);
+        all.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Machine.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        List.clear();
+                        SortText = sort.getSelectedItem().toString();
+                        if(dataSnapshot.exists())
+                            maxid=((int)dataSnapshot.getChildrenCount());
+                        for(int i = 1; i <= maxid; i++) {
+                                List.add(String.valueOf(i));
+                        }
+                        Intent intent = new Intent(MainActivity.this, ShowMachineActivity.class);
+                        intent.putExtra("SortArray", List);
+                        startActivity(intent);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+                    }
+                });
+            }
+        });
+
 
     }
 }
