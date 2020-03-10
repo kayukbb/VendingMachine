@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegActivity"></activity>
+        <activity android:name=".ShowMachineActivity"></activity>
+        <activity android:name=".RegActivity" />
         <activity android:name="com.example.drinkingmachine.RegActivity" />
         <activity android:name=".LoginActivity" />
         <activity

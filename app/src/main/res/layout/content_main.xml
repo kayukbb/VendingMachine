@@ -10,72 +10,78 @@
 
     <Button
         android:id="@+id/LogButton"
-        android:layout_width="216dp"
-        android:layout_height="74dp"
-        android:layout_marginStart="96dp"
+        android:layout_width="333dp"
+        android:layout_height="88dp"
         android:text="LOGIN"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Reg_Button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.442"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.381" />
+        app:layout_constraintVertical_bias="0.787"
+        tools:visibility="visible" />
 
     <Button
         android:id="@+id/Reg_Button"
-        android:layout_width="216dp"
-        android:layout_height="77dp"
-        android:layout_marginStart="96dp"
+        android:layout_width="333dp"
+        android:layout_height="88dp"
         android:text="Registration"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.443"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LogButton"
-        app:layout_constraintVertical_bias="0.254" />
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/textInputEditText"
-        android:layout_width="376dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="36dp"
-        android:background="?attr/colorButtonNormal"
-        android:hint="@android:string/search_go"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.142"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/All"
+        app:layout_constraintVertical_bias="0.604" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/All"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="240dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="105dp"
+        android:layout_marginEnd="9dp"
         android:background="@color/colorPrimary"
         android:text="All"
         android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/sorting"
+        android:layout_width="0dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="7dp"
+        android:background="#223D3939"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@+id/LogButton"
+        app:layout_constraintEnd_toStartOf="@+id/go"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="64dp"
+        android:layout_height="39dp"
+        app:layout_constraintBottom_toBottomOf="@+id/sorting"
+        app:layout_constraintEnd_toEndOf="@+id/sorting"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/sorting"
+        app:layout_constraintTop_toTopOf="@+id/sorting"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/ic_arrow_drop_down_black_24dp" />
+
     <Button
-        android:id="@+id/button5"
-        android:layout_width="61dp"
-        android:layout_height="42dp"
-        android:layout_marginTop="36dp"
-        android:backgroundTint="@android:color/background_dark"
-        android:text="Go!"
-        android:textColor="@android:color/background_light"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:id="@+id/go"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="9dp"
+        android:text="GO!"
+        app:layout_constraintBottom_toTopOf="@+id/All"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.71"
-        app:layout_constraintStart_toEndOf="@+id/textInputEditText"
+        app:layout_constraintStart_toEndOf="@+id/sorting"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
