@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         sort = findViewById(R.id.sorting);
-        String[] drinks = {"Oolong tea", "greentea","cola", "Lemon Tea", "tea"};
+        String[] drinks = {"Oolong Tea", "Green Tea","Cola", "Lemon Tea", "Tea"};
         final ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, drinks);
         sort.setAdapter(adapter);
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                         if(dataSnapshot.exists())
                             maxid=((int)dataSnapshot.getChildrenCount());
                         for(int i = 1; i <= maxid; i++) {
-                            if(dataSnapshot.child(String.valueOf(i)).child(SortText).exists()){
+                            if(dataSnapshot.child(String.valueOf(i)).child("Drinks").child(SortText).exists()){
                                 List.add(String.valueOf(i));
                             }
                         }
